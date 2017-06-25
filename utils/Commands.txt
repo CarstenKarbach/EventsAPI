@@ -1,0 +1,5 @@
+docker build -t karbach/restapi:v1 .
+docker run -d -p 8080:80 karbach/restapi:v1
+# Including ssl
+docker run -d -p 443:443 -p 80:80 karbach/restapi:v1
+docker exec -ti <container-id> /bin/bash

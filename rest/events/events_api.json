@@ -1,0 +1,100 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "0.0.1",
+		"title": "Event receiver service. Send any events, which should be handled by this service."
+	},
+	"consumes": [
+	             "application/json"
+	             ],
+	"produces": [
+	             "application/json"
+	],
+	"paths": {
+		"/events": {
+			"get": {
+				"description": "Get a list of all events sent to this service.\n",
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"title": "List of events",
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Event"
+							}
+						}
+					}
+				},
+				"tags": [
+				         "Events"
+				         ]
+			},	                        		  
+			"post":{
+				"summary": "",
+				"description": "Send a new event.",
+				"parameters": [
+				               {
+				            	   "name": "event",
+				            	   "in": "body",
+				            	   "description": "The event, which happened and should be handled.",
+				            	   "required": true,
+				            	   "schema": {
+				            		   "$ref": "#/definitions/Event"
+				            	   }
+				               }
+				               ],
+				               "responses": {
+				            	   "200": {
+				            		   "description": "Event was successfully handled.",
+				            		   "schema": {
+				            			   "title": "Success message",
+				            			   "type": "string"
+				            		   }
+				            	   },
+				            	   "400": {
+				            		   "description": "Error occurred during event handling.",
+				            		   "schema": {
+				            			   "title": "error message",
+				            			   "type": "string"
+				            		   }
+				            	   }
+				               },
+				               "tags": [
+				                        "Events"
+				                        ]
+			}
+		}
+	},
+	"definitions": {
+		"Event": {
+			"type": "object",
+			"required": [
+			             "date",
+			             "name",
+			             "description"
+			             ],
+			             "properties": {
+			            	 "date": {
+			            		 "type": "string",
+			            		 "format": "date-time"
+			            	 },
+			            	 "name": {
+			            		 "type": "string"
+			            	 },
+			            	 "description": {
+			            		 "type": "string"
+			            	 },
+			            	 "id":{
+			            		 "type": "integer"
+			            	 }
+			             }
+		}
+	},
+	"tags": [
+	         {
+	        	 "name": "Events",
+	        	 "description": "Post and list events to this receiver."
+	         }
+	         ]
+}
