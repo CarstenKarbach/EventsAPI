@@ -42,6 +42,9 @@ RUN a2ensite default-ssl.conf
 # Set access rights for www-data, run composer
 RUN php /var/www/html/EventsAPI/utils/install.php
 
+# DO not allow access to root doc
+RUN echo "deny from all" > /var/www/html/.htaccess
+
 # Default command       
 CMD ["apachectl", "-D", "FOREGROUND"]
 
