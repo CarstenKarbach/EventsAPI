@@ -3,3 +3,5 @@ docker run -d -p 8080:80 karbach/restapi:v1
 # Including ssl
 docker run -d -p 443:443 -p 80:80 karbach/restapi:v1
 docker exec -ti <container-id> /bin/bash
+# Add volume for data backup
+docker run -d -p 8081:80 -p 4433:443 -v /path/to/folder/on/host:/var/www/html/EventsAPI/data karbach/restapi:v1
