@@ -2,7 +2,7 @@
 require_once __DIR__.'/../../vendor/autoload.php';
 
 use Silex\Application;
-use karbach\eventsapi\EventListener;
+use jards\eventsapi\EventListener;
 
 $app = new Application();
 

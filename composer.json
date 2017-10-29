@@ -1,9 +1,16 @@
 {
-	"name": "karbach/eventsapi",
+	"name": "jards/eventsapi",
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/CarstenKarbach/EventsAPIClient"
+        }
+    ],
 	"require": {
-		"silex/silex": ">=2.0"
+		"silex/silex": ">=2.0",
+		"jards/eventsapiclient": ">=1.0"
 	},
 	 "autoload": {
-        "psr-4": {"karbach\\eventsapi\\": "lib/"}
+        "psr-4": {"jards\\eventsapi\\": "lib/"}
     }
 }

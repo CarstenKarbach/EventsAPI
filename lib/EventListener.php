@@ -1,6 +1,6 @@
 <?php
 
-namespace karbach\eventsapi;
+namespace jards\eventsapi;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
