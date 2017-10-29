@@ -3,6 +3,9 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 use Silex\Application;
 use jards\eventsapi\EventListener;
+use jards\eventsapi\MailOnEventHandler;
+use jards\eventsapi\MailOnEventListener;
+use jards\eventsapi\EventManagement;
 
 $app = new Application();
 
@@ -10,13 +13,18 @@ $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
 $app['debug'] = true;
 
-$app["EventListener"] = function($app){
-	$app["EventListener"] = new EventListener();
-	return $app["EventListener"];
+$app["MailOnEventHandler"] = function($app){
+	return new MailOnEventListener();
 };
 
-$app->POST('/events', 'EventListener:receiveEvent');
-$app->GET('/events', 'EventListener:getEvents');
+$app["EventManagement"] = function($app){
+	$result = new EventManagement();
+	$result->registerHandler($app["MailOnEventHandler"]);
+	return $result;
+};
+
+$app->POST('/events', 'EventManagement:receiveEvent');
+$app->GET('/events', 'EventManagement:getEvents');
 
 $app->run();
 
