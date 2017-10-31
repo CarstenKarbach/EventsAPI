@@ -7,6 +7,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Swagger\Client\Api\EventsApi;
+use Swagger\Client\Model\Event;
 
 /**
  * Listen for events.
@@ -153,6 +155,37 @@ class EventManagement{
 		}
 		
 		return new Response("Successfully handled event $newID: $name.");
+	}
+	
+	/**
+	 * Send an event to a event receiver.
+	 * @param string $name name of the event
+	 * @param string $description description of the event
+	 * @param string $baseURL the root URL of the event receiver REST API
+	 * 
+	 * @return boolean true on success, false on error
+	 */
+	public function sendEvent($name, $description, $baseURL='http://localhost/myapps/EventsAPI/rest/events'){
+		
+		date_default_timezone_set ( 'Europe/Amsterdam' );
+		$apiClient = new \Swagger\Client\ApiClient ();
+		$apiClient->getConfig ()->setHost ( $baseURL );
+		
+		$eventsApi = new EventsApi($apiClient);
+		
+		$event = new Event();
+		$event->setName($name);
+		$event->setDescription($description);
+		$event->setDate(new \DateTime());
+		
+		try{
+			$eventsApi->eventsPost($event);
+		}
+		catch(\Swagger\Client\ApiException $e){
+			return false;
+		}
+		
+		return true;
 	}
 	
 }
