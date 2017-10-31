@@ -1,10 +1,51 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+require_once __DIR__.'/../vendor/autoload.php';
 
-$headers =  'MIME-Version: 1.0' . "\r\n";
-$headers .= 'From: Events API <no-reply@eventsapi.jards.fz-juelich.de>' . "\r\n";
-$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
+/**
+ * Test your mail configuration with this script 
+ */
+
+function sendmail($to, $subject, $message){
+	$config = parse_ini_file(__DIR__.'/../configs/mail.cnf');
+	
+	$mail=new PHPMailer();
+	$mail->CharSet = 'UTF-8';
+	
+	$mail->IsSMTP();
+	$mail->Host       = $config['Host'];
+	
+	$mail->SMTPSecure = $config['SMTPSecure'];
+	$mail->Port       = intval($config['Port']);
+	$mail->SMTPDebug  = 0;
+	$mail->SMTPAuth   = true;
+	
+	if($config['verify_peer']==false){
+		$mail->SMTPOptions = array(
+				'ssl' => array(
+						'verify_peer' => false
+				)
+		);
+	}
+	
+	$mail->Username   = $config['Username'];
+	$mail->Password   = $config['Password'];
+	
+	$mail->SetFrom($config['Username'], 'jardsserver');
+	$mail->Subject    = $subject;
+	$mail->MsgHTML($message);
+	
+	$mail->AddAddress($to, $to);
+	
+	$mail->send();
+}
 
 
-mail('carstenkarbach@gmx.de', 'New event received', "Hello Carsten", $headers);
+$date = (new DateTime())->format('r');
+$body = 'This is the message '.$date;
+
+$subject = 'hi';
+
+sendmail('carstenkarbach@gmx.de', $subject, $body);
 
 ?>
