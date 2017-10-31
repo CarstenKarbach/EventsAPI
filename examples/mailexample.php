@@ -17,7 +17,7 @@ function sendmail($to, $subject, $message){
 	
 	$mail->SMTPSecure = $config['SMTPSecure'];
 	$mail->Port       = intval($config['Port']);
-	$mail->SMTPDebug  = 0;
+	$mail->SMTPDebug  = 4;
 	$mail->SMTPAuth   = true;
 	
 	if($config['verify_peer']==false){
@@ -46,6 +46,7 @@ $body = 'This is the message '.$date;
 
 $subject = 'hi';
 
-sendmail('carstenkarbach@gmx.de', $subject, $body);
+$config = parse_ini_file(__DIR__.'/../configs/mail.cnf');
+sendmail($config['TARGET'], $subject, $body);
 
 ?>

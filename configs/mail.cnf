@@ -1,6 +1,10 @@
+;
+; Do not commit changes to this config file!
+;
+
 ; GMail example
 ;Host        = "smtp.gmail.com"
-;SMTPSecure  = "ssl"
+;SMTPSecure  = "tls"
 ;Port        = "587"
 ;verify_peer = true; set to false, if remote certificate cannot be verified
 ;Username    = "testexample@gmail.com"
@@ -15,3 +19,5 @@ verify_peer = true
 Username    = "testtest@gmx.de"
 Password    = "XXX"
 FROMNAME    = "Jards"
+
+TARGET="carstenkarbach@gmx.de"

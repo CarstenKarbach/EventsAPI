@@ -57,7 +57,8 @@ class MailOnEventListener implements EventListener{
 	 * @param unknown $event
 	 */
 	public function handleEvent($event){
-		$this->sendmail('carstenkarbach@gmx.de', 'New event received', json_encode($event));
+		$config = parse_ini_file(__DIR__.'/../configs/mail.cnf');
+		$this->sendmail($config['TARGET'], 'New event received', json_encode($event));
 	}
 }
 
