@@ -160,14 +160,27 @@ class EventManagement{
 	 * @param string $name name of the event
 	 * @param string $description description of the event
 	 * @param string $baseURL the root URL of the event receiver REST API
+	 * @param string $certFile path to certificate file to use or null to call URL without certificate
+	 * @param string $certKey path to certificate key file, null to avoid usage of key
+	 * @param string $certPassphrase path to passphrase file for key file, null for no passphrase
 	 * 
 	 * @return boolean true on success, false on error
 	 */
-	public function sendEvent($name, $description, $baseURL='http://localhost/myapps/EventsAPI/rest/events'){
+	public function sendEvent($name, $description, $baseURL='http://localhost/myapps/EventsAPI/rest/events', $certFile = null, $certKey = null, $certPassphrase = null){
 		
 		date_default_timezone_set ( 'Europe/Amsterdam' );
 		$apiClient = new \Swagger\Client\ApiClient ();
 		$apiClient->getConfig ()->setHost ( $baseURL );
+		
+		if(! empty($certFile)){
+			$apiClient->getConfig ()->setCertificate($certFile);
+		}
+		if(! empty($certKey)){
+			$apiClient->getConfig ()->setCertificateKey($certKey);
+		}
+		if(! empty($certPassphrase)){
+			$apiClient->getConfig ()->setCertificatePassphrase($certPassphrase);
+		}
 		
 		$eventsApi = new EventsApi($apiClient);
 		
