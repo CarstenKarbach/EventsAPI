@@ -3,7 +3,7 @@
 	"repositories": [
         {
             "type": "vcs",
-            "url": "https://gitlab.version.fz-juelich.de/jards/EventsAPIClient"
+            "url": "https://gitlab.version.fz-juelich.de/jards/EventsAPIClient.git"
         }
     ],
 	"require": {
