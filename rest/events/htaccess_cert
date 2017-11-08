@@ -1,0 +1,17 @@
+Satisfy all
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+</IfModule>
+
+SSLVerifyClient require
+SSLVerifyDepth 3
+SSLRequireSSL
+SSLOptions +StdEnvVars +ExportCertData +FakeBasicAuth
+AuthName "Events API"
+AuthType Basic
+AuthBasicProvider file
+AuthUserFile "/path/to/passwordfile/restcertificates.passwd"
+Require valid-user

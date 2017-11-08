@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "709a7016e6a91869ad167c8f714f8260",
+    "content-hash": "ff4e7faae42a7a051abfd4d40e63bca7",
     "packages": [
         {
             "name": "jards/eventsapiclient",
             "version": "v2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/CarstenKarbach/EventsAPIClient.git",
+                "url": "https://gitlab.version.fz-juelich.de/jards/EventsAPIClient",
                 "reference": "69d8a58854ea6a7cd822a568ba3b6aab70719f7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CarstenKarbach/EventsAPIClient/zipball/69d8a58854ea6a7cd822a568ba3b6aab70719f7d",
-                "reference": "69d8a58854ea6a7cd822a568ba3b6aab70719f7d",
-                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -59,10 +53,6 @@
                 "sdk",
                 "swagger"
             ],
-            "support": {
-                "source": "https://github.com/CarstenKarbach/EventsAPIClient/tree/v2.2",
-                "issues": "https://github.com/CarstenKarbach/EventsAPIClient/issues"
-            },
             "time": "2017-11-06T10:22:24+00:00"
         },
         {
