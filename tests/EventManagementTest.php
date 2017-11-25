@@ -16,6 +16,8 @@ class EventManagementTest extends TestCase{
 		
 		$content = $events->getContent();
 		
+		var_dump($content);
+		
 		$eventsArray = json_decode($content);
 		$this->assertTrue(is_array($eventsArray) || is_empty($eventsArray), "Result of event management is not an array." );
 	}
