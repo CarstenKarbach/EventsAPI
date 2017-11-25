@@ -19,9 +19,9 @@ WORKDIR /root
 ENV DEBIAN_FRONTEND noninteractive 
 # Install php
 RUN apt-get update && \
- apt-get install -y curl zip unzip php libapache2-mod-php \
+ apt-get install -y curl zip unzip php libapache2-mod-php git \
   php-fpm php-cli php-mysqlnd php-pgsql php-sqlite3 php-redis \
-  php-apcu php-intl php-imagick php-mcrypt php-json php-gd php-curl php-mbstring && \
+  php-apcu php-intl php-imagick php-mcrypt php-json php-gd php-curl php-mbstring php-xml && \
  phpenmod mcrypt && \
  rm -rf /var/lib/apt/lists/*
 

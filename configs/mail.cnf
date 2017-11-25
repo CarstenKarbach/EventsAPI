@@ -3,21 +3,21 @@
 ;
 
 ; GMail example
-;Host        = "smtp.gmail.com"
-;SMTPSecure  = "tls"
-;Port        = "587"
-;verify_peer = true; set to false, if remote certificate cannot be verified
-;Username    = "testexample@gmail.com"
-;Password    = "XXX"
-;FROMNAME    = "Jards"
+Host        = "smtp.gmail.com"
+SMTPSecure  = "tls"
+Port        = "587"
+verify_peer = true; set to false, if remote certificate cannot be verified
+Username    = "jardsserver@gmail.com"
+Password    = "-aaa-bbbxcx"
+FROMNAME    = "Jards"
 
 ;GMX example
-Host        = "mail.gmx.net"
-SMTPSecure  = "ssl"
-Port        = "465"
-verify_peer = true
-Username    = "testtest@gmx.de"
-Password    = "XXX"
-FROMNAME    = "Jards"
+;Host        = "mail.gmx.net"
+;SMTPSecure  = "ssl"
+;Port        = "465"
+;verify_peer = true
+;Username    = "testtest@gmx.de"
+;Password    = "XXX"
+;FROMNAME    = "Jards"
 
 TARGET="carstenkarbach@gmx.de"
