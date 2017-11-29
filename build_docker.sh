@@ -12,7 +12,7 @@ if test -e "$APACHE_SSL_CERT_KEY";then
 	cp $APACHE_SSL_CERT_KEY ./servercerts/ssl-cert-eventsapi.key
 fi
 
-docker build -t karbach/eventsapi:v1 .
+docker build -t karbach/restapi:v1 .
 
 #Clear automatically created folders
 rm -rf ./servercerts

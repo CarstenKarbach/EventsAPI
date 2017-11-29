@@ -5,3 +5,9 @@ docker run -d -p 443:443 -p 80:80 karbach/restapi:v1
 docker exec -ti <container-id> /bin/bash
 # Add volume for data backup
 docker run -d -p 8081:80 -p 4433:443 -v /path/to/folder/on/host:/var/www/html/EventsAPI/data karbach/restapi:v1
+
+# Build with certificates:
+- create folder ./configs/certificates
+- add the files ./configs/certificates/ssl-cert-eventsapi.pem and ./configs/certificates/ssl-cert-eventsapi.key as certificate and key file
+- go into EventsAPI root folder and run ./build_docker.sh
+- launch the container with ./launch_docker.sh
