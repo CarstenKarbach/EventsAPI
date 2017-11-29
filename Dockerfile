@@ -45,6 +45,12 @@ RUN php /var/www/html/EventsAPI/utils/install.php
 # DO not allow access to root doc
 RUN echo "deny from all" > /var/www/html/.htaccess
 
+ADD ./servercerts /etc/ssl/certs/
+ADD setup.sh /tmp/
+WORKDIR /tmp
+RUN ./setup.sh
+RUN rm -rf /tmp/*
+
 # Default command       
 CMD ["apachectl", "-D", "FOREGROUND"]
 
